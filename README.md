@@ -10,9 +10,9 @@ Install Standalone Minikube Server for Demo
 ```
 
 #!/bin/bash
-# curl -O https://raw.githubusercontent.com/sarubhai/install-demo-minikube/master/minikube_install.sh
-# chmod +x minikube_install.sh
-# ./minikube_install.sh
+curl -O https://raw.githubusercontent.com/sarubhai/install-demo-minikube/master/minikube_install.sh
+chmod +x minikube_install.sh
+./minikube_install.sh
 
 ```
 
