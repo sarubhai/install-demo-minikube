@@ -5,11 +5,6 @@
 # OS: Ubuntu 20.04 LTS
 # Minikube: 1.23.1
 # Min Spec: 2 CPUs; 2GB RAM; 20GB disk space
-# UserData Config Usage
-#!/bin/bash
-# curl -O https://raw.githubusercontent.com/sarubhai/install-demo-minikube/master/minikube_install.sh
-# chmod +x minikube_install.sh
-# ./minikube_install.sh
 
 sudo apt-get --assume-yes --quiet update                                        >> /dev/null
 sudo apt-get --assume-yes --quiet install apt-transport-https curl conntrack    >> /dev/null
