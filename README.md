@@ -17,6 +17,6 @@ chmod +x minikube_install.sh
 
 ## Terraform
 Use this for demo with Kubernetes Provisiong using Terraform.
-Refer:
 
+Refer:
 [https://github.com/sarubhai/tf_kubernetes](https://github.com/sarubhai/tf_kubernetes)
