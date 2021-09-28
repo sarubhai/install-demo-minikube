@@ -48,6 +48,8 @@ sudo chown -R root /root/.kube/config
 # Local Volume
 mkdir -p /data/pv-1
 mkdir -p /data/pv-2
+mkdir -p /data/pv-3
+mkdir -p /data/pv-4
 sudo chown -R root /data
 
 
