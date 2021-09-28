@@ -27,7 +27,8 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 sudo chmod 755 /usr/local/bin/minikube
 sudo sysctl fs.protected_regular=0
 
-minikube start --driver=none        >> /dev/null
+# minikube start --driver=none        >> /dev/null
+minikube start --driver=none --network-plugin=cni --enable-default-cni     >> /dev/null
 minikube config set driver none     >> /dev/null
 
 sudo chown -R root /root/.minikube
@@ -43,7 +44,7 @@ sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s
 sudo chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 sudo chown -R root /root/.kube/config
-
+kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
 
 # Local Volume
 mkdir -p /data/pv-1
