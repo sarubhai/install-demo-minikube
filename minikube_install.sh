@@ -27,16 +27,10 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 sudo chmod 755 /usr/local/bin/minikube
 sudo sysctl fs.protected_regular=0
 
-# minikube start --driver=none        >> /dev/null
-minikube start --driver=none --network-plugin=cni --enable-default-cni     >> /dev/null
+minikube start --driver=none --network-plugin=cni --cni='cilium' --addons ingress --addons dashboard --addons metrics-server     >> /dev/null
 minikube config set driver none     >> /dev/null
-
 sudo chown -R root /root/.minikube
 sudo chmod -R u+wrx /root/.minikube
-
-minikube addons enable dashboard
-minikube addons enable metrics-server
-minikube addons enable ingress
 
 
 # Install Kubectl
@@ -44,8 +38,35 @@ sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s
 sudo chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 sudo chown -R root /root/.kube/config
-kubectl create -f https://raw.githubusercontent.com/cilium/cilium/v1.9/install/kubernetes/quick-install.yaml
 
+
+# Dashboard Ingress
+sudo tee /root/dashboard-ingress.yaml &>/dev/null <<EOF
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dashboard-ingress
+  namespace: kubernetes-dashboard
+  labels:
+    name: dashboard-ingress
+spec:
+  rules:
+  - host: minikube.demo
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: kubernetes-dashboard
+            port: 
+              number: 80
+EOF
+
+kubectl apply -f /root/dashboard-ingress.yaml
+
+
+# Optional for Demo Only
 # Local Volume
 mkdir -p /data/pv-1
 mkdir -p /data/pv-2
@@ -54,7 +75,7 @@ mkdir -p /data/pv-4
 sudo chown -R root /data
 
 
-# Optional for Demo Only
+# Demo Nginx Landing Page
 sudo tee /data/pv-1/index.html &>/dev/null <<EOF
 <html>
 <head><title>Kubernetes | Nginx</title></head>
