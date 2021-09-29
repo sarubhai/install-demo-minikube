@@ -15,6 +15,12 @@ chmod +x minikube_install.sh
 
 ```
 
+To Access Kubernetes Dashboard, map the <ipaddress> of the node to domin [minikube.demo](minikube.demo) in your /etc/hosts file.
+
+xxx.xxx.xxx.xxx   minikube.demo
+
+Then access the url [https://minikube.demo](https://minikube.demo) from your browser.
+
 ## Terraform
 Use this for demo with Kubernetes Provisiong using Terraform.
 
