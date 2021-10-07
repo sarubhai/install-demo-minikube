@@ -72,6 +72,7 @@ mkdir -p /data/pv-1
 mkdir -p /data/pv-2
 mkdir -p /data/pv-3
 mkdir -p /data/pv-4
+mkdir -p /data/pv-postgres
 sudo chown -R root /data
 
 
@@ -87,3 +88,7 @@ sudo tee /data/pv-2/index.html &>/dev/null <<EOF
 </html>
 EOF
 sudo chown -R root /data
+
+# Postgres Client
+sudo apt-get --assume-yes --quiet install postgresql-client-common postgresql-client-12  >> /dev/null
+
