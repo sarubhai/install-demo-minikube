@@ -6,7 +6,7 @@
 # Minikube: 1.23.1
 # Min Spec: 2 CPUs; 2GB RAM; 20GB disk space
 
-sudo apt-get --assume-yes --quiet update                                        >> /dev/null
+# sudo apt-get --assume-yes --quiet update                                        >> /dev/null
 sudo apt-get --assume-yes --quiet install apt-transport-https curl conntrack    >> /dev/null
 
 # Install Docker
@@ -76,7 +76,7 @@ sudo chown -R root /data
 
 
 # Demo Nginx Landing Page
-sudo tee /data/pv-1/index.html &>/dev/null <<EOF
+sudo tee /data/pv-2/index.html &>/dev/null <<EOF
 <html>
 <head><title>Kubernetes | Nginx</title></head>
 <body>
